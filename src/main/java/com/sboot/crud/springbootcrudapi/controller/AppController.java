@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sboot.crud.springbootcrudapi.config.ApplicationConiguration;
+import com.sboot.crud.springbootcrudapi.dao.EmployeeRepositoryImpl;
 import com.sboot.crud.springbootcrudapi.pojo.EmployeeEntity;
 import com.sboot.crud.springbootcrudapi.service.EmployeeService;
 
@@ -23,6 +24,8 @@ public class AppController {
 	private ApplicationConiguration applicationConig;
 	@Autowired
 	private EmployeeService service;
+	@Autowired
+	EmployeeRepositoryImpl impl;
 
 	@ApiOperation(value = "This is Greetings!!!", response = Iterable.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfull"),
@@ -32,7 +35,7 @@ public class AppController {
 	@RequestMapping("/")
 	@ResponseBody
 	public String index() throws SQLException {
-		service.test();
+		impl.getWork(1);
 		return "Welcome!!1! your active Profile is : " + applicationConig.getActiveProfile();
 	}
 

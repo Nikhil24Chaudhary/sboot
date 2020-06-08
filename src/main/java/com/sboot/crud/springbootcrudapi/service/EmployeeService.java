@@ -20,11 +20,8 @@ public class EmployeeService {
 	@Autowired
 	EmployeeRepository repository;
 
-	@Autowired
-	@Qualifier("db1")
-	DataSource db1;
 	public List<EmployeeEntity> getAllEmployees() {
-		List<EmployeeEntity> employeeList = repository.findAll();
+		List<EmployeeEntity> employeeList = repository.getWork(1);
 
 		if (employeeList.size() > 0) {
 			return employeeList;
